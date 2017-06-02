@@ -58,10 +58,10 @@ public class ProductValidator {
 		} else {
 			
 		// dataScadenza è una data
+			String dateFormat = (String)request.getAttribute("dateFormat");
 			try {
-				String dateFormat = (String)request.getAttribute("dateFormat");
 				DateFormat df = new SimpleDateFormat(dateFormat);
-				Date data = df.parse(dateFormat);
+				Date data = df.parse(dataScadenza);
 				
 		// dataScadenza è posteriore alla data di oggi
 				Date oggi = new Date();
@@ -71,9 +71,8 @@ public class ProductValidator {
 					request.setAttribute("errDataScadenza", "La data deve essere successiva ad oggi");
 					tuttoOk = false;
 				}
-			}
-			catch(ParseException e) {
-				request.setAttribute("errDataScadenza", "Il formato della data deve essere dd/mm/yyyy");
+			} catch(ParseException e) {
+				request.setAttribute("errDataScadenza", "Il formato della data deve essere " + dateFormat);
 				tuttoOk = false;
 			}
 		}
