@@ -19,7 +19,7 @@
 			value="${prodotto.prezzo}" />
 		${errPrezzo}
 		</div>
-		<div>Data di scadenza*: <input type="date" name="dataScadenza"
+		<div>Data di scadenza*: <input type="text" name="dataScadenza"
 			value="<fmt:formatDate pattern = "${dateFormat}" value = "${prodotto.dataScadenza}" />" />
 		${errDataScadenza}
 		</div>
