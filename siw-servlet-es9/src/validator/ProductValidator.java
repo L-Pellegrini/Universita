@@ -61,7 +61,7 @@ public class ProductValidator {
 			String dateFormat = (String)request.getAttribute("dateFormat");
 			try {
 				DateFormat df = new SimpleDateFormat(dateFormat);
-				Date data = df.parse(dateFormat);
+				Date data = df.parse(dataScadenza);
 				
 		// dataScadenza è posteriore alla data di oggi
 				Date oggi = new Date();
