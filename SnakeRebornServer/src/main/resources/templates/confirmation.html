@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <title>Snake Reborn Registration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+    	<h1><span th:text="#{label.confirmData}">Confirm data</span></h1>
+    	<div>
+    		<span th:text="#{label.username}">Username: </span>
+    		<span th:text="${player.username}">username</span>
+    	</div>
+    	<div>
+    		<span th:text="#{label.email}">Email: </span>
+    		<span th:text="${player.email}">email</span>
+    	</div>
+    	<form name="f" th:action="@{/user}" method="post">
+    		<span><button type="submit"><span th:text="#{label.submit}">Submit</span></button></span>
+    	</form>
+    </body>
+</html>
