@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Snake Reborn</title>
+    <title>Snake Reborn Registration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
     <body>
-        <form action="#" th:action="@{/user}" th:object="${player}" method="post">
+        <form action="#" th:action="@{/confirm}" th:object="${player}" method="post">
             <div>
                 <div>
                     <span th:text="#{label.username}">Username: </span>
@@ -23,7 +23,7 @@
                     <span th:if="${#fields.hasErrors('email')}" th:text="#{label.mandatory}">Error</span>
                 </div>
                 <div>
-                    <span><button type="submit">Submit</button></span>
+                    <span><button type="submit"><span th:text="#{label.submit}">Submit</span></button></span>
                 </div>
             </div>
         </form>

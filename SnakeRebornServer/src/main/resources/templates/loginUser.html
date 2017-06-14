@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
   <head>
     <title>Login</title>
@@ -23,7 +24,7 @@
                 </div>
             </fieldset>
         </form>
-        <div><a href="/register">Not registered? Do it now!</a></div>
+        <div><a href="/register"><span th:text="#{label.registerNow}">Register now</span></a></div>
     </div>
   </body>
 </html>

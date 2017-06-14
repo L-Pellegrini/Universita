@@ -1,14 +1,11 @@
 package it.uniroma3.spring.snake.controller;
 
-import javax.validation.Valid;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import it.uniroma3.spring.snake.service.PlayerService;
@@ -28,18 +25,16 @@ public class UserController {
 	private RoleRepository roleRepository;
 	
 	@PostMapping("/user")
-	public String registerUser(@Valid @ModelAttribute Player player, 
-								BindingResult bindingResult, Model model) {
-		if(bindingResult.hasErrors()) {
-			return "register";
-		} else {
-			player.setRole(roleRepository.findByName("ROLE_USER"));
+	public String registerUser(HttpSession httpSession) {
+		
+		Player player = (Player)httpSession.getAttribute("player");
+		
+		player.setRole(roleRepository.findByName("ROLE_USER"));
 			
-			String password = player.getPassword();
-			player.setPassword(passwordEncoder.encode(password));
-			playerService.add(player);
-			return "loginUser";
-		}
+		String password = player.getPassword();
+		player.setPassword(passwordEncoder.encode(password));
+		playerService.add(player);
+		return "loginUser";
 	}
 	
 	@RequestMapping("/profile")
